@@ -31,8 +31,8 @@ class Main:
                     frame,
                     text=" ",
                     font=('normal', 20),
-                    width=5,
-                    height=2,
+                    width=3,
+                    height=1,
                     command=lambda i=i, b=board_index: self.on_button_click(b, i)  # Lambda to pass current index
                 )
                 button.grid(row=i // 3, column=i % 3)  # Place button in the correct row and column
@@ -48,6 +48,7 @@ class Main:
             if self.check_winner(board_index):
                 tkinter.messagebox.showinfo("Tic Tac Toe", f"Player {self.current_player} wins board {board_index + 1}!")
                 self.display_big_mark(board_index, self.current_player)
+                self.current_player = "O" if self.current_player == "X" else "X"
             elif " " not in self.board[board_index]:
                 tkinter.messagebox.showinfo("Tic Tac Toe", f"It's a tie on board {board_index + 1}!")
                 self.reset_board(board_index)
